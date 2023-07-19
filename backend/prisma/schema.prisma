@@ -1,0 +1,31 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+model User {
+    id Int @id @default(autoincrement())
+    email String @unique
+    password String?
+    googleSignIn Boolean @default(false)
+    documents Document[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt    
+}
+
+model Document {
+  id Int @id @default(autoincrement())
+  documentId String
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  title String
+  extension String
+  content String
+  vector Unsupported("vector")?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt   
+}
