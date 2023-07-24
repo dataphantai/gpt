@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "type": "module",
+    "main": "server.js",
     "dependencies": {
         "@fastify/cors": "^8.3.0",
         "@prisma/client": "^4.15.0",
@@ -14,17 +15,19 @@
         "jsonwebtoken": "^9.0.0",
         "langchain": "^0.0.92",
         "mammoth": "^1.6.0",
+        "nodemon": "^2.0.22",
         "openai": "^3.2.1",
         "pdf-extraction": "^1.0.2",
         "pg": "^8.11.0",
+        "prisma": "^4.15.0",
         "uuid": "^9.0.0",
         "validator": "^13.9.0"
     },
-    "devDependencies": {
-        "nodemon": "^2.0.22",
-        "prisma": "^4.15.0"
-    },
     "scripts": {
         "start": "node_modules/.bin/nodemon server.js"
-    }
+    },
+    "engines": {
+        "npm": ">=8.0.0",
+        "node": ">=18.0.0"
+      }
 }

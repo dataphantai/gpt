@@ -31,9 +31,9 @@ const verifyIfUserExists = async (res, email) => {
         });
 
         if (user) {
-            return res.status(400).send({
-                message: EMAIL_EXISTS_ERROR_MESSAGE,
-            });
+            return true;
+        } else {
+            return false;
         }
     } catch (err) {
         return res.status(500).send({
@@ -89,27 +89,27 @@ export const signup = async (req, res) => {
         });
     }
 
-    await verifyIfUserExists(res, email);
+    const userExists = await verifyIfUserExists(res, email);
+
+    if (userExists) {
+        return res.status(400).send({
+            message: EMAIL_EXISTS_ERROR_MESSAGE,
+        });
+    }
 
     try {
         const hash = await bcrypt.hash(password, SALT_ROUNDS);
 
-        try {
-            const user = await prisma.user.create({
-                data: {
-                    email,
-                    password: hash,
-                },
-            });
+        const user = await prisma.user.create({
+            data: {
+                email,
+                password: hash,
+            },
+        });
 
-            await insertDemoDataForNewUser(user);
+        await insertDemoDataForNewUser(user);
 
-            return res.status(200).send();
-        } catch (err) {
-            return res.status(500).send({
-                message: GENERIC_SERVER_ERROR_MESSAGE,
-            });
-        }
+        return res.status(200).send();
     } catch (err) {
         return res.status(500).send({
             message: GENERIC_SERVER_ERROR_MESSAGE,
@@ -133,7 +133,13 @@ export const signupWithGoogle = async (req, res) => {
     });
     const { email } = googleUserInfoRequest.data;
 
-    await verifyIfUserExists(res, email);
+    const userExists = await verifyIfUserExists(res, email);
+
+    if (userExists) {
+        return res.status(400).send({
+            message: EMAIL_EXISTS_ERROR_MESSAGE,
+        });
+    }
 
     try {
         const user = await prisma.user.create({

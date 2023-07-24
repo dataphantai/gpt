@@ -4,7 +4,7 @@
 2. Download and install Postgres v15 (either through the installed or via the Postgres app) from [here](https://www.postgresql.org/download/).
 3. You need to create an OpenAI account. You can do so [here](https://platform.openai.com/signup).
 
-### Instructions on how to start the project locally
+### Instructions on how to start the project locally  
 
 1. Run `npm i` in the root folder.
 2. Create a new `.env` file in the root folder and copy the contents from `.env.template` inside.

@@ -4,6 +4,7 @@ import authenticated from "./authenticated/authenticated.js";
 import { login, loginWithGoogle } from "./login/login.js";
 import { signup, signupWithGoogle } from "./signup/signup.js";
 import { deleteDocument, getAll, upload } from "./documents/documents.js";
+import { health } from "./health/health.js";
 import answer from "./answer/answer.js";
 import auth from "../middlewares/auth.js";
 import {
@@ -16,11 +17,17 @@ import {
     API_DOCUMENTS_DELETE_URL,
     API_DOCUMENTS_UPLOAD_URL,
     API_ANSWER_URL,
+    API_SERVER_HEALTH,
 } from "../common/constants/constants.js";
 
 const uploadMulter = multer();
 
 const routes = [
+    {
+        method: "GET",
+        url: API_SERVER_HEALTH,
+        handler: health,
+    },
     {
         method: "GET",
         url: API_IS_USER_AUTHENTICATED_URL,

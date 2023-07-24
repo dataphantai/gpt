@@ -51,7 +51,7 @@ const answer = async (req, res) => {
             const openAIPrompt = preparePrompt(prompt, rows);
 
             const gptAnswer = await getAnswer(openAIPrompt);
-            const answer = gptAnswer.choices[0].text;
+            const answer = gptAnswer.choices[0].message.content;
 
             if (answer.includes(INFORMATION_NOT_KNOWN_ERROR_MESSAGE)) {
                 return res.status(200).send({

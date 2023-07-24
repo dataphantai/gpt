@@ -22,8 +22,10 @@ const start = async () => {
             origin: "*",
         });
 
-        await server.listen({ port: process.env.PORT });
+        await server.listen({ port: process.env.PORT || 80, host: "0.0.0.0" });
     } catch (error) {
+        console.log(error);
+
         process.exit(1);
     }
 };

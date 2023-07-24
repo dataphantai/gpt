@@ -8,6 +8,7 @@ export const API_DOCUMENTS_URL = API_BASE_URL + "/documents";
 export const API_DOCUMENTS_DELETE_URL = API_BASE_URL + "/documents/:documentId";
 export const API_DOCUMENTS_UPLOAD_URL = API_DOCUMENTS_URL + "/upload";
 export const API_ANSWER_URL = API_BASE_URL + "/answer";
+export const API_SERVER_HEALTH = "/"
 
 export const SALT_ROUNDS = 10;
 export const JWT_TOKEN_EXPIRY_TIME = "2h";
@@ -41,3 +42,5 @@ export const INFORMATION_NOT_IN_DOCUMENTS_ERROR_MESSAGE =
 export const INFORMATION_NOT_KNOWN_ERROR_MESSAGE = "I do not know.";
 export const GENERIC_SERVER_ERROR_MESSAGE =
     "500 Internal Server Error. Please try again later.";
+export const SERVER_IS_UP = 
+    "200 The server is up."
