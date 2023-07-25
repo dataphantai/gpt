@@ -33,9 +33,9 @@ export const EMAIL_PASSWORD_ERROR_MESSAGE = "Email and password do not match.";
 export const NO_DOCUMENT_RECEIVED_ERROR_MESSAGE = "No document received.";
 export const EXTENSION_NOT_SUPPORTED_ERROR_MESSAGE =
     "Extension not supported. Please upload only .pdf, .doc, .docx and .txt files.";
-export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB in bytes
+export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB in bytes
 export const FILE_SIZE_TOO_BIG_ERROR_MESSAGE =
-    "File size too big. Upload documents less than 10MB.";
+    "File size too big. Upload documents less than 50MB.";
 export const NO_PROMPT_RECEIVED_ERROR_MESSAGE = "No prompt received.";
 export const INFORMATION_NOT_IN_DOCUMENTS_ERROR_MESSAGE =
     "Information is not in uploaded documents.";

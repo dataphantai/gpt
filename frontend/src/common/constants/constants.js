@@ -2,8 +2,9 @@ export const APP_BASE_URL = "/";
 export const APP_LOGIN_URL = APP_BASE_URL + "login";
 export const APP_SIGNUP_URL = APP_BASE_URL + "signup";
 export const APP_MANAGE_DOCUMENTS_URL = APP_BASE_URL + "documents";
+export const APP_INFO_URL = APP_BASE_URL + "info";
 
-export const API_BASE_URL = 'https://api.dataphant.ai/api';
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 export const API_IS_USER_AUTHENTICATED_URL = "/authenticated";
 export const API_LOGIN_URL = "/login";
 export const API_LOGIN_WITH_GOOGLE_URL = API_LOGIN_URL + "/google";
@@ -18,9 +19,9 @@ export const PASSWORD_ERROR_MESSAGE = "Password cannot be empty.";
 export const PASSWORDS_MATCH_ERROR_MESSAGE = "Passwords must match.";
 export const SIGNUP_SUCCESS_MESSAGE =
     "Sign up successful. Go to login page and continue.";
-export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB in bytes
+export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB in bytes
 export const FILE_SIZE_TOO_BIG_MESSAGE =
-    "File size too big. Upload documents less than 10MB.";
+    "File size too big. Upload documents less than 50MB.";
 export const FILE_UPLOAD_SUCCESS_MESSAGE = "File successfully uploaded.";
 export const FILE_DELETE_SUCCESS_MESSAGE = "File successfully deleted.";
 

@@ -10,11 +10,13 @@ import {
     APP_LOGIN_URL,
     APP_SIGNUP_URL,
     APP_MANAGE_DOCUMENTS_URL,
+    APP_INFO_URL,
 } from "common/constants/constants";
 import AuthRoute from "common/components/AuthRoute/AuthRoute";
 import PublicRoute from "common/components/PublicRoute/PublicRoute";
 import Chat from "pages/Chat/Chat";
 import ManageDocuments from "pages/ManageDocuments/ManageDocuments";
+import Info from "pages/Info/Info";
 import Login from "pages/Login/Login";
 import SignUp from "pages/SignUp/SignUp";
 import NotFound from "pages/NotFound/NotFound";
@@ -42,6 +44,15 @@ const router = createBrowserRouter([
         element: (
             <AuthRoute>
                 <ManageDocuments />
+            </AuthRoute>
+        ),
+        errorElement: <NotFound />,
+    },
+    {
+        path: APP_INFO_URL,
+        element: (
+            <AuthRoute>
+                <Info />
             </AuthRoute>
         ),
         errorElement: <NotFound />,

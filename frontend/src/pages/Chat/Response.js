@@ -61,7 +61,7 @@ const Response = ({
     ...rest
 }) => (
     <Box className={`flex justify-start ${className}`} {...rest}>
-        <Paper className="w-fit md:max-lg:max-w-[100%] max-w-[50%] p-4">
+        <Paper className="w-fit lg:max-w-[50%] max-w-[100%] p-4">
             {text !== QAGPT_REQUEST_IN_FLIGHT_MESSAGE ? (
                 <>
                     <Typography variant="body1">{text}</Typography>

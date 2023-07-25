@@ -45,6 +45,7 @@ const Chat = () => {
             initial: true,
         },
     ]);
+    const [voiceSupported, setVoiceSupported] = useState(false);
     const chatBox = useRef(null);
     const recognition = useRef(null);
 
@@ -167,12 +168,16 @@ const Chat = () => {
         const SpeechRecognition = window.webkitSpeechRecognition;
         const SpeechGrammarList = window.webkitSpeechGrammarList;
 
-        recognition.current = new SpeechRecognition();
-        recognition.current.grammars = new SpeechGrammarList();
-        recognition.current.lang = "en-US";
-        recognition.current.continuous = true;
-        recognition.current.interimResults = true;
-        recognition.current.maxAlternatives = 1;
+        if (SpeechRecognition && SpeechGrammarList) {
+            recognition.current = new SpeechRecognition();
+            recognition.current.grammars = new SpeechGrammarList();
+            recognition.current.lang = "en-US";
+            recognition.current.continuous = true;
+            recognition.current.interimResults = true;
+            recognition.current.maxAlternatives = 1;
+
+            setVoiceSupported(true);
+        }
     }, []);
 
     useKeyPress("Enter", () => setPromptInChat(prompt));
@@ -205,7 +210,6 @@ const Chat = () => {
                 <Paper className="flex items-center p-4">
                     <TextField
                         id="chatPrompt"
-                        className="mr-4"
                         sx={{
                             ".MuiInput-root, .Mui-focused": {
                                 padding: 0,
@@ -239,18 +243,21 @@ const Chat = () => {
                         onChange={(e) => setPrompt(e.target.value)}
                         disabled={requestInFlight}
                     />
-                    <IconButton
-                        disabled={requestInFlight}
-                        onClick={() =>
-                            setVoiceStarted((voiceStarted) => !voiceStarted)
-                        }
-                    >
-                        {!voiceStarted ? (
-                            <MicOffIcon className="cursor-pointer" />
-                        ) : (
-                            <MicOnIcon className="cursor-pointer" />
-                        )}
-                    </IconButton>
+                    {voiceSupported && (
+                        <IconButton
+                            className="ml-4"
+                            disabled={requestInFlight}
+                            onClick={() =>
+                                setVoiceStarted((voiceStarted) => !voiceStarted)
+                            }
+                        >
+                            {!voiceStarted ? (
+                                <MicOffIcon className="cursor-pointer" />
+                            ) : (
+                                <MicOnIcon className="cursor-pointer" />
+                            )}
+                        </IconButton>
+                    )}
                 </Paper>
             </div>
         </Page>

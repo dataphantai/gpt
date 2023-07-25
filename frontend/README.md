@@ -3,7 +3,7 @@
 1. You need to have Node.js v18.16.0 or more installed.
 2. You need to register a new project in your Google Cloud Console. Follow the first steps of [this tutorial](https://blog.logrocket.com/guide-adding-google-login-react-app/).
 
-### Instructions on how to start the project locally
+### Instructions on how to start the project locally  
 
 1. Run `npm i` in the root folder.
 2. Create a new `.env` file in the root folder and copy the contents from `.env.template` inside.
@@ -15,7 +15,7 @@
 ### Instructions on how to build for production
 
 1. Follow steps 1 - 3 from above.
-2. Run `npm build`.
+2. Run `npm run build`.
 
 The contents of the resulting `build` folder can be deployed on the production server. The app will start by running `npm start`.
 

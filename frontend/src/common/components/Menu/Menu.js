@@ -9,12 +9,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ChatIcon from "@mui/icons-material/ChatOutlined";
 import FolderIcon from "@mui/icons-material/FolderOutlined";
+import InfoOutlined from "@mui/icons-material/InfoOutlined";
 import LogoutIcon from "@mui/icons-material/LogoutOutlined";
 
 import {
     APP_BASE_URL,
     APP_LOGIN_URL,
     APP_MANAGE_DOCUMENTS_URL,
+    APP_INFO_URL,
     LS_TOKEN_KEY,
 } from "common/constants/constants";
 
@@ -32,7 +34,7 @@ const Menu = () => {
 
     return (
         <Drawer className="w-60" variant="permanent" open>
-            <List className="w-60 p-0">
+            <List className="w-60 p-0 menu">
                 <ListItem className="p-0">
                     <ListItemButton
                         className={`p-4 ${
@@ -71,6 +73,27 @@ const Menu = () => {
                         <ListItemText
                             className="m-0"
                             primary="Manage Documents"
+                        />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem className="p-0">
+                    <ListItemButton
+                        className={`p-4 ${
+                            pathname === APP_INFO_URL ? "active" : ""
+                        }`}
+                        onClick={() => navigate(APP_INFO_URL)}
+                        sx={(theme) => ({
+                            "&.active, &.active:hover": {
+                                backgroundColor: `${theme.palette.primary.dark}`,
+                            },
+                        })}
+                    >
+                        <ListItemIcon className="mr-2 min-w-0">
+                            <InfoOutlined />
+                        </ListItemIcon>
+                        <ListItemText
+                            className="m-0"
+                            primary="Information Hub"
                         />
                     </ListItemButton>
                 </ListItem>
